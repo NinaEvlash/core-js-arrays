@@ -20,8 +20,13 @@
  *    getIntervalArray(0, 100) => [ 0, 1, 2, ..., 100 ]
  *    getIntervalArray(3, 3) => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  const step = 1;
+  const result = Array.from(
+    { length: (end - start) / step + 1 },
+    (value, index) => start + index * step
+  );
+  return result;
 }
 
 /**
@@ -37,8 +42,18 @@ function getIntervalArray(/* start, end */) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  const arrays = [];
+  arrays.push(arr1, arr2);
+  const arrLength = arrays.reduce(
+    (total, arr) => Math.max(total, arr.length),
+    0
+  );
+  const newArr = Array.from({ length: arrLength });
+  const resArr = newArr.map((_, i) =>
+    arrays.map((arr) => arr[i] || 0).reduce((sum, n) => sum + n, 0)
+  );
+  return resArr;
 }
 
 /**
@@ -53,8 +68,9 @@ function sumArrays(/* arr1, arr2 */) {
  *    findElement(['Array', 'Number', 'string'], 'Date') => -1
  *    findElement([0, 1, 2, 3, 4, 5], 5) => 5
  */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
+function findElement(arr, value) {
+  const res = arr.indexOf(value);
+  return res;
 }
 
 /**
@@ -71,8 +87,9 @@ function findElement(/* arr, value */) {
  *    findAllOccurrences([ null, undefined, null ], null) => 2
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  const res = arr.reduce((pov, index) => (index === item ? pov + 1 : pov), 0);
+  return res;
 }
 
 /**
@@ -87,8 +104,15 @@ function findAllOccurrences(/* arr, item */) {
  *    removeFalsyValues([ 1, 2, 3, 4, 5, 'false' ]) => [ 1, 2, 3, 4, 5, 'false' ]
  *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
  */
-function removeFalsyValues(/* arr */) {
-  throw new Error('Not implemented');
+function removeFalsyValues(arr) {
+  const falsyValue = [false, null, 0, '', undefined, NaN];
+  const newArr = arr.filter((el) => {
+    let res = true;
+    if (!falsyValue.includes(el)) res = true;
+    else res = false;
+    return res;
+  });
+  return newArr;
 }
 
 /**
