@@ -125,8 +125,9 @@ function removeFalsyValues(arr) {
  *    getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]) => [ 0, 1, 2, 3, 4 ]
  *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
  */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  const resArr = arr.map((value, index) => arr[index].length);
+  return resArr;
 }
 
 /**
@@ -143,8 +144,18 @@ function getStringsLength(/* arr */) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  let res;
+  const arrLength = arr.length;
+  if (arrLength === 0) res = 0;
+  else {
+    const arrValueSum = arr.reduce((sum, item) => {
+      return sum + item;
+    }, 0);
+    const averageNum = arrValueSum / arrLength;
+    res = Math.round(averageNum * 100) / 100;
+  }
+  return res;
 }
 
 /**
@@ -157,8 +168,13 @@ function getAverage(/* arr */) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  const numArr = arr.map((value, index) => arr[index].length);
+  const firstNum = numArr[0];
+  const res = numArr.every((num) => {
+    return num === firstNum;
+  });
+  return res;
 }
 
 /**
@@ -172,8 +188,9 @@ function isSameLength(/* arr */) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  const res = arr.some((currentValue, index) => currentValue === index);
+  return res;
 }
 
 /**
