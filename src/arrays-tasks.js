@@ -440,14 +440,8 @@ function getElementByIndices(arr, indices) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
-function getFalsyValuesCount(arr) {
-  const count = arr.reduce((nest, elem) => {
-    if (!elem) {
-      nest += 1;
-    }
-    return nest;
-  }, 0);
-  return count;
+function getFalsyValuesCount(/* arr */) {
+  throw new Error('Not implemented');
 }
 
 /**
